@@ -3,39 +3,29 @@
 
 import sys
 import os
+import json
 import time
-import argparse
+import logging
 import boto3.ec2
 from botocore.exceptions import ClientError
+from flask import Flask, jsonify, request, json
 
-ec2 = boto3.client('ec2')
-
-class Mem:
-    """
-    Global Class Pattern:
-    Declare globals here.
-    """
-    instance_id = ""
-
-def stop():
+#def status(request):
+def stop(id):
     """
     This code is from Amazon's EC2 example.
     Do a dryrun first to verify permissions.
-    Try to stop the EC2 instance.
+    Try to get the EC2 instance status.
     """
-    print("------------------------------")
-    print("Try to stop the EC2 instance.")
-    print("------------------------------")
-
+    
     try:
-        ec2.stop_instances(InstanceIds=[Mem.instance_id], DryRun=True)
-    except ClientError as e:
-        if 'DryRunOperation' not in str(e):
-            raise
-
-    # Dry run succeeded, call stop_instances without dryrun
-    try:
-        response = ec2.stop_instances(InstanceIds=[Mem.instance_id], DryRun=False)
-        print(response)
+        region_name_var=os.environ.get("REGION_NAME")  #Recover region name from env variables
+        ec2 = boto3.client('ec2', region_name=region_name_var)
+        response = ec2.stop_instances(InstanceIds=[id], DryRun=False)
+        if (response):
+            return jsonify(response)
+        else:
+            resp = {'message': 'fail'}
+            return jsonify(resp)
     except ClientError as e:
         print(e)

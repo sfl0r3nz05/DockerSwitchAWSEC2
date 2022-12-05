@@ -17,6 +17,14 @@
       {
         "name": "Instance Status",
         "description": "Current instance status."
+      },
+      {
+        "name": "Instance Start",
+        "description": "Current instance status."
+      },
+      {
+        "name": "Instance Stop",
+        "description": "Current instance status."
       }
     ],
     "schemes": [
@@ -31,7 +39,75 @@
           ],
           "summary": "Search all the AGVs",
           "description": "Endpoint created to send a command in the South Bound direction through the Orion Context Broker.",
-          "operationId": "PostAgvCmd",
+          "operationId": "statusEC2",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Instance ID.",
+              "required": true,
+              "allowReserved": true,
+              "schema": {
+                "type": "string",
+                "default": "i-07f3dbd9dfa258b26"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Success"
+            },
+            "401": {
+              "description": "Acceso denegado"
+            },
+            "404": {
+              "description": "service not available"
+            }
+          }
+        }
+      },
+      "/startEC2/{id}": {
+        "post": {
+          "tags": [
+            "Instance Start"
+          ],
+          "summary": "Search all the AGVs",
+          "description": "Endpoint created to send a command in the South Bound direction through the Orion Context Broker.",
+          "operationId": "startEC2",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Instance ID.",
+              "required": true,
+              "allowReserved": true,
+              "schema": {
+                "type": "string",
+                "default": "i-07f3dbd9dfa258b26"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Success"
+            },
+            "401": {
+              "description": "Acceso denegado"
+            },
+            "404": {
+              "description": "service not available"
+            }
+          }
+        }
+      },
+      "/stopEC2/{id}": {
+        "post": {
+          "tags": [
+            "Instance Stop"
+          ],
+          "summary": "Search all the AGVs",
+          "description": "Endpoint created to send a command in the South Bound direction through the Orion Context Broker.",
+          "operationId": "stopEC2",
           "parameters": [
             {
               "name": "id",
