@@ -6,7 +6,7 @@
 
 - Check this [youtube link for a video demonstration](https://youtu.be/DKFEdS1wlJU).
 
-## Prerequisites
+## Prerequisite
 
 1. [Install docker on ubunu](https://docs.docker.com/engine/install/ubuntu/).
 2. [Manage Docker as a non-root user](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user).
