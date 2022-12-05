@@ -1,8 +1,8 @@
 {
     "openapi": "3.0.0",
     "info": {
-      "description": "This is a REST API for the IC2M2 project",
-      "title": "IC2M2 Api REST",
+      "description": "This is a Docker API to manage on/off AWS EC2 instances",
+      "title": "Docker API to manage on/off AWS EC2 instances",
       "contact": {
         "email": ""
       }
@@ -20,7 +20,7 @@
       },
       {
         "name": "Instance Start",
-        "description": "Current instance status."
+        "description": "Start the EC2 Instance from instance ID."
       },
       {
         "name": "Instance Stop",
@@ -38,7 +38,7 @@
             "Instance Status"
           ],
           "summary": "Search all the AGVs",
-          "description": "Endpoint created to send a command in the South Bound direction through the Orion Context Broker.",
+          "description": "Check the current instance status.",
           "operationId": "statusEC2",
           "parameters": [
             {
@@ -72,7 +72,7 @@
             "Instance Start"
           ],
           "summary": "Search all the AGVs",
-          "description": "Endpoint created to send a command in the South Bound direction through the Orion Context Broker.",
+          "description": "Start the EC2 Instance from instance ID.",
           "operationId": "startEC2",
           "parameters": [
             {
@@ -106,7 +106,7 @@
             "Instance Stop"
           ],
           "summary": "Search all the AGVs",
-          "description": "Endpoint created to send a command in the South Bound direction through the Orion Context Broker.",
+          "description": "Stop the EC2 Instance from instance ID.",
           "operationId": "stopEC2",
           "parameters": [
             {
