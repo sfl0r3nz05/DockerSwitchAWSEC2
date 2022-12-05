@@ -3,7 +3,7 @@ version: "3.8"
 services:
 
   api-ec2:
-    build: api-ec2/
+    image: sflorenz05/api-aws-mngmt:v0.1
     environment:
       AWS_ACCESS_KEY_ID: "${AWS_ACCESS_KEY_ID}"
       AWS_SECRET_ACCESS_KEY: "${AWS_SECRET_ACCESS_KEY}"
