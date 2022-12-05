@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+
+  api-ec2:
+    build: api-ec2/
+    environment:
+      AWS_ACCESS_KEY_ID: "${AWS_ACCESS_KEY_ID}"
+      AWS_SECRET_ACCESS_KEY: "${AWS_SECRET_ACCESS_KEY}"
+      AWS_SESSION_TOKEN: "${AWS_SESSION_TOKEN}"
+      REGION_NAME: "${REGION_NAME}"
+    ports:
+      - "8000:8000"
+    networks:
+      - default
+  
+  swagger:
+    image: swaggerapi/swagger-ui:v4.6.1
+    restart: always
+    ports:
+      - 8081:8080
+    environment:
+     SWAGGER_JSON: /home/swagger.json
+     LAYOUT: "BaseLayout" 
+    volumes:
+      - ./swagger/swagger.json:/home/swagger.json
+    networks:
+      - default
+
+networks:
+  default:
+    labels:
+      org.fiware: 'tutorial'
+    ipam:
+      config:
+        - subnet: 172.18.1.0/24

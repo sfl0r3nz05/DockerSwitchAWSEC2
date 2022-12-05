@@ -1,0 +1,64 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "description": "This is a REST API for the IC2M2 project",
+      "title": "IC2M2 Api REST",
+      "contact": {
+        "email": ""
+      }
+    },
+    "servers": [
+      {
+        "url": "http://127.0.0.1:8000"
+      }
+    ],
+    "basePath": "/",
+    "tags": [
+      {
+        "name": "Instance Status",
+        "description": "Current instance status."
+      }
+    ],
+    "schemes": [
+      "http",
+      "https"
+    ],
+    "paths": {
+      "/statusEC2/{id}": {
+        "get": {
+          "tags": [
+            "Instance Status"
+          ],
+          "summary": "Search all the AGVs",
+          "description": "Endpoint created to send a command in the South Bound direction through the Orion Context Broker.",
+          "operationId": "PostAgvCmd",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Instance ID.",
+              "required": true,
+              "allowReserved": true,
+              "schema": {
+                "type": "string",
+                "default": "i-07f3dbd9dfa258b26"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Success"
+            },
+            "401": {
+              "description": "Acceso denegado"
+            },
+            "404": {
+              "description": "service not available"
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+    }    
+  }  
