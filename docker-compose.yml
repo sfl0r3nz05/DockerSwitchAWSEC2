@@ -4,6 +4,9 @@ services:
 
   api-ec2:
     image: sflorenz05/api-aws-mngmt:v0.1
+    hostname: api-ec2
+    container_name: api-ec2
+    restart: always
     environment:
       AWS_ACCESS_KEY_ID: "${AWS_ACCESS_KEY_ID}"
       AWS_SECRET_ACCESS_KEY: "${AWS_SECRET_ACCESS_KEY}"
